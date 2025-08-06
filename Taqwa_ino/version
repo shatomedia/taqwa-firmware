@@ -1,0 +1,129 @@
+Hystorical Jadwal Waktu Sholat
+TAQWA - Digital Prayer Time
+Created by. SHATOMEDIA
+===============================================================
+Version 1.0 : 2019
+        1. membuat jadwal waktu sholat dengan display 7-segment
+
+Version 2.0 :
+        1. DPT, JWS01, JWS-Endi program menjadi satu
+        2. Sudut Matahari untuk shubuh 20^
+
+Version 2.1 :
+        1. Sudut Matahari untuk shubuh 18^
+
+Version 3.0 :
+        1. Menambah Mode untuk JWS-Kalix
+
+Version 4.0 : MEI 2023
+        1. Merubah UI pengaturan untuk memperingan proses pengaturan
+        2. Menambahkan fasilitas koreksi waktu Ikhtiyat - atau +
+        3. Pilihan sudut matahari pada waktu shubuh 20^ atau 18^
+        4. Menambahkan alaram setiap waktu ditiap hari
+
+Version 4.5 : MEI 2023
+        1. Memperbaiki menu alaram setiap waktu menjadi 5 pilihan setiap harinya
+        2. Terdapat pilihan Display 7-segment pada logika High atau Low
+
+Version 5.0 :
+        1. menambah fasilitas display TV
+        2. display TV dapat ditampilkan melalui Android TV Box
+
+Version 5.4 : 4 Juni 2023
+        1. Update data Ephemeris (Deklinasi Matahari, dan Equation Time tahun 2023),
+        2. Menambah template (theme) pada display Tv
+        3. menambah pilihan theme pada menu Display TV
+
+Version 5.5 : 5 Juni 2023
+        1. Menambah Theme menjadi 3 pilihan (memori tidak mencukupi apabila di tambah lagi)
+        2. Memindahkan menu pengaturan pada reset di menu Bantuan
+        3. Menghilangkan library "Version.h"
+        4. Menambahkan Nomor Kontak layanan service pada menu Bantuan
+        5. 
+
+Version 5.6 : Juni 2023
+        1. Memperbaiki Manajement Memori
+
+Version 6.0 : November 2023
+        1. Menambahkan menu pengaturan mode WiFi Akses Point / Client
+        2. Hard reset. Hubungkan D0 (pin 4 dari kiri Chip) ke Ground pada saat reboot
+        3. Menambahkan tampilan Iqomah pada Display TV
+        4. Menghilangkan menu bantuan dan dipindahkan ke menu perangkat
+        6. Mengganti IP static dari 182.168.4.1 menjadi 192.168.1.111
+        7. IP saat mode AP atau STATION tetap pada IP 192.168.1.111
+        8. ID perangkat melalui MAC Address setiap control 
+        9. semua pendukung DPT (Apk Android, TV BOX) menjadi versi yang sama
+
+Version 6.1 : November 2023
+        1. Mensinkronkan versi kode dan versi publikasi pada ino, Apk Android, dan Apk TV
+        2. Template TV pada mode Online ditambahkan video live mekah sebagai background
+
+        [Warning] Output path is not specified. Unable to reuse previously compiled files. Build will be slower. See README.
+        Executable segment sizes:
+        IROM   : 669480          - code in flash         (default or ICACHE_FLASH_ATTR)
+        IRAM   : 28348   / 32768 - code in IRAM          (ICACHE_RAM_ATTR, ISRs...)
+        DATA   : 7480  )         - initialized variables (global, static) in RAM/HEAP
+        RODATA : 4388  ) / 81920 - constants             (global, static) in RAM/HEAP
+        BSS    : 28304 )         - zeroed variables      (global, static) in RAM/HEAP
+        Sketch uses 709696 bytes (67%) of program storage space. Maximum is 1044464 bytes.
+        Global variables use 40172 bytes (49%) of dynamic memory, leaving 41748 bytes for local variables. Maximum is 81920 bytes.
+        IntelliSense configuration already up to date. To manually rebuild your IntelliSense configuration run "Ctrl+Alt+I"
+
+
+        
+Version 7.0 : Februari 2024
+        1. Menghilangkan Halaman pengaturan HTML (index http://192.168.1.111/)akses IP
+        2. pengaturan tidak dapat dilakukan melalui UI browser
+        3. Pengaturan hanya bisa melalui aplikasi Android
+        4. Source memori berkurang 10%
+
+        
+Version 7.1: Maret 2024
+        1. Memperbaiki pergeseran waktu sholat di tahun Kabisat (2024 (februari tanggal 29))
+           -> Penyebab, Database Ephemeris pada equation time tidak ter-input pada tanggal; 29 (kabisat), normal hanya sampai tanggal 28.
+           -> diperbaiki pada file library Ephemeris
+
+
+Version 7.2: Maret 2024
+        1. Menambahkan pembacaan dan pembuatan file JSON untuk API 
+        2. File JSON berisi semua informasi masjid, Kalender, dan iqomah dan Jadwal Sholat sehingga data terpusat pada TAQWA Media Player
+        3. Library pada JWS_Memori ditambahkan penyimpanan untuk domain
+        4. Menambahkan Theme menjadi 8 pilihan: 3 bawaan yang lama(web server base), yang 5 dengan tampilan baru dan beragam
+
+
+
+
+
+
+
+Berikut beberapa hal yang bisa dioptimalkan dari program ini:
+
+Penggunaan String
+Gantilah const String version = ... menjadi const char* version = ...; untuk menghemat memori pada ESP8266.
+
+Komentar dan Kode Tidak Terpakai
+Banyak bagian kode yang dikomentari (khususnya include halaman web dan ESP-NOW). Jika sudah tidak digunakan, sebaiknya dihapus atau dipindahkan ke dokumentasi.
+
+Penanganan Error
+Penanganan error pada fungsi seperti receiveData() masih sederhana. Sebaiknya tambahkan logika validasi dan feedback yang lebih jelas.
+
+Inisialisasi Variabel
+Variabel seperti konter di loop bisa dibuat lebih jelas dengan tipe data yang sesuai (unsigned long untuk waktu).
+
+Penggunaan Memori
+Ukuran buffer JSON (StaticJsonDocument<420>) sebaiknya disesuaikan dengan kebutuhan sebenarnya agar tidak boros RAM.
+
+Modularisasi
+Fungsi di loop() sudah cukup modular, namun jika memungkinkan, pisahkan logika utama ke dalam fungsi-fungsi kecil agar lebih mudah dibaca dan diuji.
+
+Keamanan Web Server
+Endpoint web server belum ada autentikasi. Jika perangkat terhubung ke jaringan publik, pertimbangkan menambah autentikasi sederhana.
+
+Penamaan Variabel
+Gunakan penamaan variabel yang konsisten dan jelas, misal Dip bisa diganti menjadi pinDip agar lebih deskriptif.
+
+Optimasi Delay
+Hindari penggunaan delay() di dalam loop utama agar tidak menghambat proses lain.
+
+Dokumentasi
+Tambahkan dokumentasi singkat di awal file dan pada fungsi-fungsi utama agar mudah dipahami oleh pengembang lain.

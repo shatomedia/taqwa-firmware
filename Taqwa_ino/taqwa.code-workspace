@@ -1,0 +1,51 @@
+{
+	"folders": [
+		{
+			"name": "Taqwa_ino",
+			"path": "."
+		},
+		{
+			"path": "../../../Documents/Arduino/libraries"
+		},
+		{
+			"path": "../../Documents/Arduino/libraries/JWS_DS3231"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Taqwa_ino",
+		"files.associations": {
+			"*.embeddedhtml": "html",
+			"sstream": "cpp",
+			"ostream": "cpp",
+			"*.tcc": "cpp",
+			"istream": "cpp",
+			"__locale": "cpp",
+			"string": "cpp",
+			"string_view": "cpp",
+			"__string": "cpp",
+			"array": "cpp",
+			"locale": "cpp",
+			"memory": "cpp",
+			"tuple": "cpp",
+			"variant": "cpp",
+			"functional": "cpp",
+			"utility": "cpp",
+			"__bit_reference": "cpp",
+			"__hash_table": "cpp",
+			"__split_buffer": "cpp",
+			"deque": "cpp",
+			"initializer_list": "cpp",
+			"list": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"filesystem": "cpp",
+			"random": "cpp",
+			"cstddef": "cpp",
+			"complex": "cpp",
+			"regex": "cpp",
+			"future": "cpp",
+			"ranges": "cpp",
+			"system_error": "cpp"
+		}
+	}
+}
